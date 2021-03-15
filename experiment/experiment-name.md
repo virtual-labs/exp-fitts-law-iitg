@@ -1,1 +1,1 @@
-## Experiment name
+## Fitt's Law
