@@ -1,0 +1,114 @@
+<html> 
+<head>
+<script src="RGraph.common.core.js"></script>
+<script src="RGraph.line.js"></script>
+<style>
+#cvs {
+    border: 3px #000 solid;
+}
+</style>
+</head> 
+<body>
+<canvas id="cvs" width="900" height="500"></canvas>
+<script>
+ var canvas = document.getElementById('cvs');
+var mainCanvas = document.querySelector("#cvs");
+var mainContext = mainCanvas.getContext("2d");
+ var canvasWidth = mainCanvas.width;
+var canvasHeight = mainCanvas.height;
+var hi=new Array();
+var hii=new Array();
+for(var i=0;i<=21;i++)
+{
+hi[i]=localStorage.time1[i];
+}
+for(var j=0;j<=21;j++)
+{
+hii[j]=localStorage.diameter1[j];
+}
+mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+mainContext.fillStyle = "#EEEEEE";
+mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+ window.onload = function ()
+    {
+        var line = new RGraph.Line({
+            id: 'cvs',
+data: [
+                [hii[0],hii[1],hii[2],hii[3],hii[4],hii[5],hii[6],hii[7],hii[8],hii[9],hii[10],hii[11],hii[12],hii[13],hii[14],hii[15],hii[16],hii[17],hii[18],hii[19],hi[20],hii[21]],
+                [hi[0],hi[1],hi[2],hi[3],hi[4],hi[5],hi[6],hi[7],hi[8],hi[9],hi[10],hi[11],hi[12],hi[13],hi[14],hi[15],hi[16],hi[17],hi[18],hi[19],hi[20],hi[21]]
+            ],
+            options: {
+		filled: false,
+                textAccessible: true,
+                hmargin: 5,
+                tickmarks: 'endcircle',
+                labels: [1,2,3,4,5,6,7,8,9,10,11,12]
+            }
+        }).draw();
+mainContext.font="13px Arial";
+mainContext.fillText("X-Axis = Index Of Difficulty (ID)", 700, 20);
+mainContext.fillText("Y-Axis = Movement Time (MT)", 700, 38);
+    };
+</script>
+<div id="wrapper">
+    <div style="position: absolute; z-index: 1; left: 950px; top: 20px; width:100px; height:600px; background-color: white;">
+        <script>
+var ch1;
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='black'><b><u>Distances</u></b><br>");
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+for(var k=0;k<localStorage.distance1.length;k++)
+{
+ch1 = localStorage.distance1[k];
+if(ch1!=','){
+document.write("<font color='black' size=4>"+ch1);
+}
+else
+{
+document.write("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+}
+</script>
+    </div>
+</div>
+<div id="wrapper">
+    <div style="position: absolute; z-index: 1; left: 1050px; top: 20px; width:100px; height:600px; background-color: white;">
+        <script>
+var ch2;
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='blue'><b><u>Times</u></b><br>");
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+for(var l=0;l<localStorage.time1.length;l++)
+{
+ch2 = localStorage.time1[l];
+if(ch2!=','){
+document.write("<font color='blue' size=4>"+ch2);
+}
+else
+{
+document.write("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+}
+</script>
+    </div>
+</div>
+<div id="wrapper">
+    <div style="position: absolute; z-index: 1; left: 1150px; top: 20px; width:100px; height:600px; background-color: white;">
+        <script>
+var ch3;
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='red'><b><u>Diameters</u></b><br>");
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+for(var m=0;m<localStorage.diameter1.length;m++)
+{
+ch3 = localStorage.diameter1[m];
+if(ch3!=','){
+document.write("<font color='red' size=4>"+ch3);
+}
+else
+{
+document.write("<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+}
+</script>
+    </div>
+</div>
+</body> 
+</html>
